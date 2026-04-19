@@ -1,0 +1,24 @@
+t = int(input())
+
+for _ in range(t):
+    X = int(input())
+    s = input().strip()
+    
+    carlsen = 0
+    chef = 0
+    
+    for ch in s:
+        if ch == 'C':
+            carlsen += 2
+        elif ch == 'N':
+            chef += 2
+        else:  # 'D'
+            carlsen += 1
+            chef += 1
+    
+    if carlsen > chef:
+        print(60 * X)
+    elif chef > carlsen:
+        print(40 * X)
+    else:
+        print(55 * X)
