@@ -1,0 +1,36 @@
+t = int(input())
+
+for _ in range(t):
+    s = input().strip()
+    
+    if len(s) < 10:
+        print("NO")
+        continue
+    
+    has_lower = False
+    has_upper = False
+    has_digit = False
+    has_special = False
+    
+    special_chars = "@#%&?"
+    
+    for i in range(len(s)):
+        ch = s[i]
+        
+        # lowercase anywhere
+        if ch.islower():
+            has_lower = True
+        
+        # strictly inside checks
+        if 0 < i < len(s) - 1:
+            if ch.isupper():
+                has_upper = True
+            elif ch.isdigit():
+                has_digit = True
+            elif ch in special_chars:
+                has_special = True
+    
+    if has_lower and has_upper and has_digit and has_special:
+        print("YES")
+    else:
+        print("NO")
