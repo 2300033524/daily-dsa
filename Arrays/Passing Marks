@@ -1,0 +1,12 @@
+t = int(input())
+
+for _ in range(t):
+    n, x = map(int, input().split())
+    arr = list(map(int, input().split()))
+
+    arr.sort()
+
+    # x students should have marks strictly greater than passing marks
+    passing_mark = arr[n - x] - 1
+
+    print(passing_mark)
