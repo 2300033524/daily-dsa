@@ -1,0 +1,14 @@
+for _ in range(int(input())):
+    n = int(input())
+    arr = list(map(int, input().split()))
+
+    first = second = -1
+
+    for num in arr:
+        if num > first:
+            second = first
+            first = num
+        elif num != first and num > second:
+            second = num
+
+    print(first + second)
