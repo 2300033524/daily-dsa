@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.*;
+
+class Codechef {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine());
+
+        StringBuilder ans = new StringBuilder();
+
+        while (T-- > 0) {
+            String s = br.readLine();
+
+            int zeros = 0, ones = 0;
+
+            for (char c : s.toCharArray()) {
+                if (c == '0') zeros++;
+                else ones++;
+            }
+
+            int diff = Math.abs(ones - zeros);
+
+            // Already self-destructing
+            if (diff == 0) {
+                ans.append(0).append('\n');
+                continue;
+            }
+
+            // Difference parity must be even
+            if (diff % 2 != 0) {
+                ans.append(-1).append('\n');
+                continue;
+            }
+
+            // Need at least one adjacent different pair
+            boolean hasBoundary = false;
+            for (int i = 0; i < s.length() - 1; i++) {
+                if (s.charAt(i) != s.charAt(i + 1)) {
+                    hasBoundary = true;
+                    break;
+                }
+            }
+
+            if (!hasBoundary) {
+                ans.append(-1).append('\n');
+            } else {
+                ans.append(diff / 2).append('\n');
+            }
+        }
+
+        System.out.print(ans);
+    }
+}
